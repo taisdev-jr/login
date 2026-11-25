@@ -1,0 +1,217 @@
+:root {
+  --bg-neutro: #f2efe9;
+  --card-bg: #ffffff;
+  --texto-principal: #282c27;
+  --texto-suave: #696e67;
+  --borda-input: #dad6ce;
+  --destaque: #4f6352;
+  --destaque-hover: #3d4d40;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  font-family:
+    "Segoe UI",
+    system-ui,
+    -apple-system,
+    sans-serif;
+}
+
+body {
+  background-color: var(--bg-neutro);
+  color: var(--texto-principal);
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 24px;
+  position: relative;
+  overflow-x: hidden;
+}
+
+/* Ramificações nos cantos da tela */
+body::before,
+body::after {
+  content: "";
+  position: fixed;
+  width: 460px;
+  height: 460px;
+  pointer-events: none;
+  z-index: 0;
+  opacity: 0.42;
+  background: url("data:image/svg+xml,%3Csvg xmlns='http://w3.org' viewBox='0 0 400 400' fill='none' stroke='%238c9489' stroke-width='1.8' stroke-linecap='round'%3E%3Cpath d='M-10,20 C80,30 140,90 190,180 C220,235 280,260 350,270'/%3E%3Cpath d='M70,42 C110,20 160,15 210,35'/%3E%3Cpath d='M125,85 C100,130 95,180 115,230'/%3E%3Cpath d='M165,138 C210,120 260,125 300,150'/%3E%3Cpath d='M235,232 C220,275 225,320 250,360'/%3E%3Cpath d='M30,110 C75,120 105,150 110,195'/%3E%3Ccircle cx='210' cy='35' r='3' fill='%238c9489'/%3E%3Ccircle cx='300' cy='150' r='3' fill='%238c9489'/%3E%3Ccircle cx='350' cy='270' r='3.5' fill='%238c9489'/%3E%3Ccircle cx='250' cy='360' r='3' fill='%238c9489'/%3E%3Ccircle cx='115' cy='230' r='2.5' fill='%238c9489'/%3E%3C/svg%3E")
+    no-repeat center / contain;
+}
+
+body::before {
+  top: -15px;
+  left: -15px;
+}
+body::after {
+  bottom: -15px;
+  right: -15px;
+  transform: rotate(180deg);
+}
+
+/* Cartão principal */
+.container {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  width: 100%;
+  max-width: 940px;
+  background-color: var(--card-bg);
+  border-radius: 22px;
+  overflow: hidden;
+  box-shadow: 0 20px 45px rgba(40, 44, 39, 0.08);
+  border: 1px solid rgba(218, 214, 206, 0.7);
+}
+
+/* Lado esquerdo: Formulário */
+.login {
+  flex: 1;
+  padding: 52px 48px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.login h1 {
+  font-size: 1.9rem;
+  font-weight: 700;
+  margin-bottom: 28px;
+}
+
+.campo {
+  margin-bottom: 18px;
+}
+
+.campo label {
+  display: block;
+  font-size: 0.88rem;
+  font-weight: 600;
+  margin-bottom: 6px;
+}
+
+.campo input {
+  width: 100%;
+  padding: 12px 14px;
+  border: 1px solid var(--borda-input);
+  border-radius: 10px;
+  background-color: #f9f8f5;
+  font-size: 0.95rem;
+  color: var(--texto-principal);
+  transition: 0.2s ease;
+}
+
+.campo input::placeholder {
+  color: #a3a7a1;
+}
+
+.campo input:focus {
+  outline: none;
+  border-color: var(--destaque);
+  background-color: #ffffff;
+  box-shadow: 0 0 0 3px rgba(79, 99, 82, 0.14);
+}
+
+.login button[type="submit"] {
+  width: 100%;
+  padding: 13px;
+  margin-top: 8px;
+  background-color: var(--destaque);
+  color: #ffffff;
+  border: none;
+  border-radius: 10px;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition:
+    background-color 0.2s,
+    transform 0.1s;
+}
+
+.login button[type="submit"]:hover {
+  background-color: var(--destaque-hover);
+}
+.login button[type="submit"]:active {
+  transform: scale(0.99);
+}
+
+.separador {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin: 24px 0;
+  color: var(--texto-suave);
+  font-size: 0.85rem;
+}
+
+.separador span {
+  flex: 1;
+  height: 1px;
+  background-color: var(--borda-input);
+}
+
+.cadastro {
+  text-align: center;
+  font-size: 0.9rem;
+  color: var(--texto-suave);
+}
+
+.cadastro a {
+  color: var(--destaque);
+  font-weight: 600;
+  text-decoration: none;
+  margin-left: 4px;
+}
+
+.cadastro a:hover {
+  text-decoration: underline;
+}
+
+/* Lado direito: Imagem das folhas */
+.imagem {
+  flex: 1.05;
+  padding: 14px 14px 14px 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.imagem img {
+  width: 100%;
+  height: 100%;
+  min-height: 470px;
+  object-fit: cover;
+  border-radius: 14px;
+  display: block;
+}
+
+/* Responsivo para celular */
+@media (max-width: 768px) {
+  .container {
+    flex-direction: column;
+    max-width: 440px;
+  }
+  .imagem {
+    order: -1;
+    padding: 12px 12px 0;
+  }
+  .imagem img {
+    min-height: 190px;
+    max-height: 210px;
+    border-radius: 12px;
+  }
+  .login {
+    padding: 32px 28px 36px;
+  }
+  body::before,
+  body::after {
+    width: 280px;
+    height: 280px;
+    opacity: 0.28;
+  }
+}
